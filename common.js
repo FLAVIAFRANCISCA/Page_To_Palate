@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginBtn = document.getElementById('loginBtn');
     const signupBtn = document.getElementById('signupBtn');
     const closeButtons = document.querySelectorAll('.modal .close-button');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
     const logoutBtn = document.getElementById('logoutBtn');
     const addRecipeLink = document.getElementById('addRecipeLink');
     const privateCollectionLink = document.getElementById('privateCollectionLink');
@@ -23,13 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const userGreeting = document.getElementById('userGreeting');
     const usernameSpan = document.getElementById('username');
 
-    const showModal = (modal) => {
-        modal.classList.add('show-modal');
+   const showModal = (modal) => {
+        modal.classList.add('show-modal'); // Add a class to show the modal
         document.body.style.overflow = 'hidden';
     };
 
     const hideModal = (modal) => {
-        modal.classList.remove('show-modal');
+        modal.classList.remove('show-modal'); // Remove the class to hide the modal
         document.body.style.overflow = '';
     };
 
@@ -55,95 +57,89 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // User State Functions
     const checkUserState = () => {
         const loggedInUser = localStorage.getItem('loggedInUser');
         if (loggedInUser) {
             loginBtn.classList.add('hide');
             signupBtn.classList.add('hide');
             logoutBtn.classList.remove('hide');
-            if (addRecipeLink) addRecipeLink.classList.remove('hide');
-            if (privateCollectionLink) privateCollectionLink.classList.remove('hide');
-            if (favoritesLink) favoritesLink.classList.remove('hide');
-            if (userGreeting) userGreeting.classList.remove('hide');
-            if (usernameSpan) usernameSpan.textContent = loggedInUser;
+            addRecipeLink.classList.remove('hide');
+            privateCollectionLink.classList.remove('hide');
+            favoritesLink.classList.remove('hide');
+            userGreeting.classList.remove('hide');
+            usernameSpan.textContent = loggedInUser;
         } else {
             loginBtn.classList.remove('hide');
             signupBtn.classList.remove('hide');
             logoutBtn.classList.add('hide');
-            if (addRecipeLink) addRecipeLink.classList.add('hide');
-            if (privateCollectionLink) privateCollectionLink.classList.add('hide');
-            if (favoritesLink) favoritesLink.classList.add('hide');
-            if (userGreeting) userGreeting.classList.add('hide');
+            addRecipeLink.classList.add('hide');
+            privateCollectionLink.classList.add('hide');
+            favoritesLink.classList.add('hide');
+            userGreeting.classList.add('hide');
         }
     };
+    
+    window.logout = () => {
+        localStorage.removeItem('loggedInUser');
+        checkUserState();
+        window.location.href = 'index.html';
+    };
 
-    const registerUser = (username, password) => {
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const userExists = users.some(user => user.username === username);
-        if (userExists) {
-            return false;
+    const saveUser = (username, password) => {
+        const users = JSON.parse(localStorage.getItem('users')) || {};
+        if (users[username]) {
+            return false; // User already exists
         }
-        users.push({ username, password });
+        users[username] = password;
         localStorage.setItem('users', JSON.stringify(users));
         return true;
     };
-
+    
     const authenticateUser = (username, password) => {
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const user = users.find(user => user.username === username && user.password === password);
-        return !!user;
+        const users = JSON.parse(localStorage.getItem('users')) || {};
+        return users[username] === password;
     };
-
-    document.addEventListener('submit', (e) => {
+    
+    // Form Submissions
+    signupForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
-        if (e.target.id === 'signupForm') {
-            const username = e.target.signupUsername.value;
-            const password = e.target.signupPassword.value;
-            if (registerUser(username, password)) {
-                window.showNotification('Registration successful! Please log in.', 'success');
-                hideModal(signupModal);
-                showModal(loginModal);
-            } else {
-                window.showNotification('Username already exists.', 'error');
-            }
+        const username = e.target.signupUsername.value;
+        const password = e.target.signupPassword.value;
+        if (saveUser(username, password)) {
+            window.showNotification('Registration successful! Please log in.', 'success');
+            hideModal(signupModal);
+            showModal(loginModal);
+        } else {
+            window.showNotification('Username already exists.', 'error');
         }
-
-        if (e.target.id === 'loginForm') {
-            const username = e.target.loginUsername.value;
-            const password = e.target.loginPassword.value;
-            if (authenticateUser(username, password)) {
-                localStorage.setItem('loggedInUser', username);
-                window.showNotification('Login successful!', 'success');
-                hideModal(loginModal);
-                checkUserState();
-                window.location.href = 'recipes.html';
-            } else {
-                window.showNotification('Invalid username or password.', 'error');
-            }
+    });
+    
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = e.target.loginUsername.value;
+        const password = e.target.loginPassword.value;
+        if (authenticateUser(username, password)) {
+            localStorage.setItem('loggedInUser', username);
+            window.showNotification('Login successful!', 'success');
+            hideModal(loginModal);
+            checkUserState();
+            window.location.href = 'recipes.html';
+        } else {
+            window.showNotification('Invalid username or password.', 'error');
         }
     });
 
     if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('loggedInUser');
-            window.showNotification('Logged out successfully!', 'info');
-            checkUserState();
-            window.location.href = 'index.html';
-        });
+        logoutBtn.addEventListener('click', window.logout);
     }
-
+    
     // Notification system
     window.showNotification = (message, type = 'info') => {
-        const container = document.getElementById('notificationContainer');
-        if (!container) {
-            console.error('Notification container not found!');
-            return;
-        }
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
         notification.textContent = message;
-        container.appendChild(notification);
+        document.body.appendChild(notification);
         setTimeout(() => {
             notification.classList.add('show');
         }, 10);
@@ -153,5 +149,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     };
 
-    checkUserState();
+    checkUserState(); // Initial check on page load
 });
