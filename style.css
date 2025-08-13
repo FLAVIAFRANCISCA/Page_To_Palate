@@ -2,7 +2,6 @@
 /* Global Styles & Layout   */
 /* ======================== */
 
-/* Custom Elegant Color Palette & Fonts */
 :root {
     --primary-color: #F4F1DE;
     --secondary-color: #487349;
@@ -71,7 +70,7 @@ a {
 
 .header h1 {
     margin: 0;
-    font-size: 1.75rem; /* Slightly smaller title */
+    font-size: 1.75rem; 
     color: var(--secondary-color);
 }
 
@@ -88,8 +87,8 @@ a {
 
 .hamburger-icon {
     display: block;
-    width: 24px; /* Slightly smaller icon */
-    height: 2px; /* Thinner icon */
+    width: 24px;
+    height: 2px; 
     background: var(--secondary-color);
     position: relative;
     transition: transform 0.3s ease;
@@ -99,18 +98,18 @@ a {
 .hamburger-icon::after {
     content: '';
     position: absolute;
-    width: 24px; /* Consistent with base width */
-    height: 2px; /* Consistent with base height */
+    width: 24px; 
+    height: 2px; 
     background: var(--secondary-color);
     transition: transform 0.3s ease, top 0.3s ease;
 }
 
 .hamburger-icon::before {
-    top: -7px; /* Adjusted spacing */
+    top: -7px; 
 }
 
 .hamburger-icon::after {
-    top: 7px; /* Adjusted spacing */
+    top: 7px; 
 }
 
 .nav-toggle.active .hamburger-icon {
@@ -131,7 +130,7 @@ a {
 .nav {
     position: fixed;
     top: 0;
-    right: -260px; /* Slightly narrower menu */
+    right: -260px; 
     width: 250px;
     height: 100vh;
     background-color: var(--primary-color);
@@ -141,7 +140,7 @@ a {
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Reduced gap */
+    gap: 10px; 
     z-index: 55;
 }
 
@@ -155,24 +154,24 @@ a {
     font-weight: bold;
     color: var(--secondary-color);
     border: 2px solid var(--secondary-color);
-    border-radius: 20px; /* Slightly smaller radius */
-    padding: 8px 15px; /* Reduced padding */
+    border-radius: 20px; 
+    padding: 8px 15px; 
     transition: all 0.3s ease;
     text-transform: uppercase;
     cursor: pointer;
     background-color: transparent;
     text-align: center;
-    text-decoration: none; /* Ensure nav links are also styled as buttons */
+    text-decoration: none; 
     white-space: nowrap;
-    width: 85%; /* Adjusted width in menu */
+    width: 85%; 
     margin: 0 auto;
-    font-size: 0.9rem; /* Smaller font */
+    font-size: 0.9rem; 
 }
 
 .nav-link:hover, .nav-button:hover {
     background-color: var(--secondary-color);
     color: var(--primary-color);
-    box-shadow: 0 2px 5px var(--shadow-color); /* Reduced shadow */
+    box-shadow: 0 2px 5px var(--shadow-color); 
 }
 
 .nav-link.active, .nav-button.active {
@@ -185,36 +184,35 @@ a {
     font-weight: bold;
     align-self: center;
     padding: 10px;
-    margin-bottom: 15px; /* Reduced margin */
-    font-size: 0.9rem; /* Smaller font */
+    margin-bottom: 15px; 
+    font-size: 0.9rem; 
 }
 
 /* Hero Section and Spacing */
 .hero-section {
     text-align: center;
-    padding: 60px 20px; /* Reduced padding */
+    padding: 60px 20px; 
 }
 
 .hero-section h2 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem); /* Adjusted font size */
+    font-size: clamp(1.8rem, 4vw, 2.5rem); 
     color: var(--secondary-color);
     margin: 0;
     letter-spacing: normal;
 }
 
 .hero-section p {
-    font-size: clamp(0.9rem, 1.8vw, 1.1rem); /* Adjusted font size */
-    color: var(--secondary-color);
-    margin-top: 8px; /* Reduced margin */
-    margin-bottom: 30px; /* Reduced margin */
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem); 
+    margin-top: 8px; 
+    margin-bottom: 30px; 
 }
 
 /* 3D Carousel Styles */
 .carousel-container {
-    width: 200px; /* Smaller carousel */
-    height: 200px; /* Smaller carousel */
-    perspective: 600px; /* Adjusted perspective */
-    margin: 30px auto; /* Reduced margin */
+    width: 200px; 
+    height: 200px;
+    perspective: 600px; 
+    margin: 30px auto; 
 }
 
 .carousel {
@@ -222,7 +220,7 @@ a {
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    animation: rotateCarousel 15s infinite linear; /* Faster rotation */
+    animation: rotateCarousel 15s infinite linear; 
 }
 
 .carousel-item {
@@ -233,16 +231,16 @@ a {
     height: 100%;
     overflow: hidden;
     backface-visibility: hidden;
-    border-radius: 8px; /* Smaller radius */
-    box-shadow: 0 3px 8px var(--shadow-color); /* Reduced shadow */
-    border: 1px solid var(--secondary-color); /* Thinner border */
+    border-radius: 8px; 
+    box-shadow: 0 3px 8px var(--shadow-color); 
+    border: 1px solid var(--secondary-color); 
 }
 
 .carousel-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px; /* Consistent radius */
+    border-radius: 8px; 
 }
 
 .carousel-item:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }
@@ -256,13 +254,13 @@ a {
 }
 
 .explore-button-container {
-    margin-top: 30px; /* Reduced margin */
+    margin-top: 30px; 
 }
 
 .explore-button {
-    font-size: 1rem; /* Smaller font */
-    padding: 12px 25px; /* Reduced padding */
-    border-radius: 20px; /* Consistent radius */
+    font-size: 1rem; 
+    padding: 12px 25px;
+    border-radius: 20px; 
 }
 
 /* Recipes Page Styles */
@@ -278,34 +276,34 @@ a {
 .recipes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax width */
-    gap: 15px; /* Reduced gap */
-    margin-top: 15px; /* Reduced margin */
+    gap: 15px; 
+    margin-top: 15px; 
 }
 
 .filter-controls {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Reduced gap */
+    gap: 10px;
     flex-wrap: wrap;
     width: 100%;
 }
 
 .search-input {
-    padding: 10px 15px; /* Reduced padding */
-    border-radius: 20px; /* Consistent radius */
-    border: 1px solid var(--secondary-color); /* Thinner border */
+    padding: 10px 15px; 
+    border-radius: 20px; 
+    border: 1px solid var(--secondary-color); 
     background-color: var(--card-bg-color);
     color: var(--text-color);
     font-family: var(--font-family-body);
     transition: all 0.3s ease;
     width: 100%;
-    max-width: 400px; /* Reduced max width */
-    font-size: 0.9rem; /* Smaller font */
+    max-width: 400px; 
+    font-size: 0.9rem; 
 }
 
 .search-input:focus {
     outline: none;
-    box-shadow: 0 0 3px var(--secondary-color); /* Reduced shadow */
+    box-shadow: 0 0 3px var(--secondary-color); 
 }
 
 .recipe-card-container {
@@ -316,29 +314,29 @@ a {
 
 .recipe-card {
     background: var(--card-bg-color);
-    border-radius: 8px; /* Consistent radius */
-    box-shadow: 0 2px 5px var(--shadow-color); /* Reduced shadow */
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px var(--shadow-color); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     height: 100%;
     display: flex;
     flex-direction: column;
-    position: relative; /* Added for heart icon positioning */
+    position: relative;
 }
 
 .recipe-card:hover {
-    transform: translateY(-3px); /* Reduced lift */
-    box-shadow: 0 3px 8px var(--secondary-color); /* Reduced shadow */
+    transform: translateY(-3px); 
+    box-shadow: 0 3px 8px var(--secondary-color); 
 }
 
 .recipe-card img {
     width: 100%;
-    height: 180px; /* Slightly smaller image */
+    height: 180px; 
     object-fit: cover;
 }
 
 .recipe-card-content {
-    padding: 12px; /* Reduced padding */
+    padding: 12px; 
     text-align: center;
     flex-grow: 1;
     display: flex;
@@ -356,7 +354,7 @@ a {
 }
 
 .recipe-card-content h3 {
-    font-size: 1rem; /* Smaller font */
+    font-size: 1rem; 
     color: var(--secondary-color);
     margin: 0;
 }
@@ -370,25 +368,25 @@ a {
 
 .no-results {
     text-align: center;
-    padding: 30px; /* Reduced padding */
+    padding: 30px; 
     color: var(--secondary-color);
-    font-size: 0.9rem; /* Smaller font */
+    font-size: 0.9rem; 
 }
 
 /* Favorite Icon Styles */
 .favorite-icon {
     position: absolute;
-    top: 8px; /* Adjusted position */
-    right: 8px; /* Adjusted position */
-    font-size: 1.5rem; /* Smaller icon */
-    color: white;
+    top: 8px; 
+    right: 8px; 
+    font-size: 1.5rem;
+    color: var(--primary-color);
     cursor: pointer;
-    text-shadow: 0 0 3px rgba(0,0,0,0.5); /* Reduced shadow */
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .favorite-icon:hover {
-    transform: scale(1.05); /* Reduced scale */
+    transform: scale(1.05); 
 }
 
 .favorite-icon.active {
@@ -407,7 +405,7 @@ a {
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
     backdrop-filter: blur(5px);
-    padding-top: 40px; /* Reduced padding */
+    padding-top: 40px;
 }
 
 .modal.show-modal {
@@ -417,48 +415,47 @@ a {
 .modal-content {
     background-color: var(--background-color);
     margin: 5% auto;
-    padding: 25px; /* Reduced padding */
-    border: 1px solid var(--secondary-color); /* Thinner border */
-    width: 85%; /* Adjusted width */
-    max-width: 700px; /* Adjusted max width */
-    border-radius: 8px; /* Consistent radius */
-    box-shadow: 0 3px 8px rgba(0,0,0,0.3); /* Reduced shadow */
+    padding: 25px; 
+    border: 1px solid var(--secondary-color); 
+    width: 85%; 
+    max-width: 700px;
+    border-radius: 8px; 
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3); 
     position: relative;
     animation: fadeIn 0.3s ease-out;
 }
 
 .modal-content h2, h3 {
     text-align: center;
-    font-size: 1.5rem; /* Smaller heading */
-    margin-bottom: 1.5rem; /* Reduced margin */
+    font-size: 1.5rem; 
+    margin-bottom: 1.5rem; 
 }
 
 /* Adjusted modal image to be a small square and centered */
 .modal-image-container {
-    width: 200px; /* Set a fixed width */
-    height: 200px; /* Set a fixed height for a square */
-    margin: 0 auto 15px auto; /* Center the container and add margin below */
+    width: 200px; 
+    height: 200px; 
+    margin: 0 auto 15px auto; 
     overflow: hidden;
     border-radius: 8px;
 }
 
 .modal-image-container img {
-    width: 100%; /* Ensure image fills its container */
-    height: 100%; /* Ensure image fills its container */
-    object-fit: cover; /* Crop to fit, maintaining aspect ratio */
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
 }
 
 .modal-text-content {
     text-align: left;
-    font-size: 0.9rem; /* Smaller font */
+    font-size: 0.9rem; 
 }
 
 .modal-text-content h3 {
     color: var(--secondary-color);
     text-align: left;
-    margin-top: 1rem; /* Reduced margin */
-    margin-bottom: 0.4rem; /* Reduced margin */
-    font-size: 1.1rem; /* Slightly smaller sub-heading */
+    margin-top: 1rem; 
+    font-size: 1.1rem; 
 }
 
 .modal-text-content ul {
@@ -468,26 +465,26 @@ a {
 
 .modal-text-content ul li {
     background-color: var(--card-bg-color);
-    border: 1px solid var(--secondary-color); /* Thinner border */
-    border-radius: 4px; /* Smaller radius */
-    padding: 6px; /* Reduced padding */
-    margin-bottom: 4px; /* Reduced margin */
-    font-size: 0.85rem; /* Smaller list item font */
+    border: 1px solid var(--secondary-color); 
+    border-radius: 4px; 
+    padding: 6px; 
+    margin-bottom: 4px; 
+    font-size: 0.85rem; 
 }
 
 .modal-text-content p {
-    white-space: pre-wrap; /* Preserve line breaks from textarea input */
+    white-space: pre-wrap; 
     line-height: 1.4;
 }
 
 .close-button {
     color: #aaa;
     float: right;
-    font-size: 22px; /* Smaller close button */
+    font-size: 22px; 
     font-weight: bold;
     position: absolute;
-    top: 8px; /* Adjusted position */
-    right: 15px; /* Adjusted position */
+    top: 8px; 
+    right: 15px; 
 }
 
 .close-button:hover,
@@ -498,56 +495,56 @@ a {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); } /* Reduced animation distance */
+    from { opacity: 0; transform: translateY(-10px); } 
     to { opacity: 1; transform: translateY(0); }
 }
 
 /* Form Styles */
 .form-card {
     background: var(--card-bg-color);
-    border-radius: 8px; /* Consistent radius */
-    box-shadow: 0 2px 5px var(--shadow-color); /* Reduced shadow */
-    padding: 30px; /* Reduced padding */
-    margin-top: 30px; /* Reduced margin */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--shadow-color); 
+    padding: 30px; 
+    margin-top: 30px; 
 }
 
 .form-card h2 {
     text-align: center;
-    margin-bottom: 20px; /* Reduced margin */
-    font-size: 1.5rem; /* Smaller heading */
+    margin-bottom: 20px; 
+    font-size: 1.5rem; 
 }
 
 .form-group {
-    margin-bottom: 15px; /* Reduced margin */
+    margin-bottom: 15px; 
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px; /* Reduced margin */
+    margin-bottom: 5px; 
     font-weight: bold;
     color: var(--secondary-color);
-    font-size: 0.9rem; /* Smaller font */
+    font-size: 0.9rem; 
 }
 
 .form-input, .form-textarea {
     width: 100%;
-    padding: 10px; /* Reduced padding */
-    border: 1px solid var(--secondary-color); /* Thinner border */
-    border-radius: 20px; /* Consistent radius */
+    padding: 10px; 
+    border: 1px solid var(--secondary-color); 
+    border-radius: 20px;
     background-color: var(--card-bg-color);
     font-family: var(--font-family-body);
     transition: all 0.3s ease;
-    box-sizing: border-box; /* Ensures padding doesn't affect total width */
-    font-size: 0.9rem; /* Smaller font */
+    box-sizing: border-box;
+    font-size: 0.9rem; 
 }
 
 .form-input:focus, .form-textarea:focus {
     outline: none;
-    box-shadow: 0 0 3px var(--secondary-color); /* Reduced shadow */
+    box-shadow: 0 0 3px var(--secondary-color); 
 }
 
 .form-textarea {
-    border-radius: 8px; /* Consistent radius */
+    border-radius: 8px; 
     resize: vertical;
 }
 
@@ -555,17 +552,17 @@ a {
     background-color: var(--secondary-color);
     color: var(--primary-color);
     border: none;
-    padding: 12px 25px; /* Reduced padding */
-    border-radius: 20px; /* Consistent radius */
+    padding: 12px 25px; 
+    border-radius: 20px; 
     cursor: pointer;
-    font-size: 0.9rem; /* Smaller font */
+    font-size: 0.9rem; 
     font-weight: bold;
     text-transform: uppercase;
 }
 
 .button:hover {
     background-color: #3f6840;
-    box-shadow: 0 2px 5px var(--shadow-color); /* Reduced shadow */
+    box-shadow: 0 2px 5px var(--shadow-color);
 }
 
 .hide {
@@ -589,7 +586,7 @@ a {
     z-index: 1000;
     border: 1px solid var(--secondary-color);
     text-align: center;
-    white-space: nowrap; /* Prevent wrapping */
+    white-space: nowrap; 
 }
 
 .notification.show {
