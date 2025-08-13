@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Recipe</title>
+    <title>Add Recipe - Page to Palate</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,51 +33,39 @@
         </div>
     </header>
 
-    <main>
-        <section class="container">
-            <div class="form-card">
-                <h2>Add a New Recipe</h2>
-                <form id="addRecipeForm">
-                    <div class="form-group">
-                        <label for="recipeTitle">Recipe Title</label>
-                        <input type="text" id="recipeTitle" class="form-input" required />
+    <main class="main-content">
+        <div class="form-container">
+            <h2>Add a New Recipe</h2>
+            <form id="recipeForm" class="recipe-form">
+                <div class="form-group">
+                    <label for="recipeName">Recipe Name</label>
+                    <input type="text" id="recipeName" name="recipeName" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipeImage">Image URL</label>
+                    <input type="url" id="recipeImage" name="recipeImage">
+                </div>
+                <div class="form-group">
+                    <label>Ingredients</label>
+                    <div class="ingredient-list" id="ingredientList"></div>
+                    <div class="add-item-container">
+                        <input type="text" id="ingredientInput" placeholder="Enter ingredient">
+                        <button type="button" id="addIngredientBtn" class="button">Add</button>
                     </div>
-                    <div class="form-group">
-                        <label for="recipeCategory">Category</label>
-                        <input type="text" id="recipeCategory" class="form-input" placeholder="e.g., Chicken, Vegan, Dessert" required />
+                </div>
+                <div class="form-group">
+                    <label>Instructions</label>
+                    <div class="instruction-list" id="instructionList"></div>
+                    <div class="add-item-container">
+                        <input type="text" id="instructionInput" placeholder="Enter instruction step">
+                        <button type="button" id="addInstructionBtn" class="button">Add</button>
                     </div>
-                    <div class="form-group">
-                        <label for="recipeImageFile">Recipe Image</label>
-                        <input type="file" id="recipeImageFile" accept="image/*" class="form-input" />
-                    </div>
-                    <div class="form-group">
-                        <label for="ingredients">Ingredients (one per line)</label>
-                        <textarea id="ingredients" class="form-textarea" rows="6" placeholder="1 cup flour&#10;2 large eggs&#10;1 tsp salt" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="instructions">Instructions</label>
-                        <textarea id="instructions" class="form-textarea" rows="10" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="isPrivate">
-                            <input type="checkbox" id="isPrivate" checked />
-                            Add to My Private Collection (only visible to you)
-                        </label>
-                    </div>
-                    <button type="submit" class="button">Add Recipe</button>
-                </form>
-            </div>
-        </section>
+                </div>
+                <button type="submit" class="button submit-button">Submit Recipe</button>
+            </form>
+        </div>
     </main>
 
-    <div id="confirmationModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <p id="modalMessage"></p>
-            <button id="modalOkBtn" class="button">OK</button>
-        </div>
-    </div>
-    
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 Page to Palate.</p>
