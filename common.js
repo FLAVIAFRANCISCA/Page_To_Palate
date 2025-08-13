@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const userGreeting = document.getElementById('userGreeting');
     const usernameSpan = document.getElementById('username');
 
-   const showModal = (modal) => {
-        modal.classList.add('show-modal'); 
+    const showModal = (modal) => {
+        modal.classList.add('show-modal');
         document.body.style.overflow = 'hidden';
     };
 
@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // User State Functions
     const checkUserState = () => {
         const loggedInUser = localStorage.getItem('loggedInUser');
         if (loggedInUser) {
@@ -79,42 +78,40 @@ document.addEventListener('DOMContentLoaded', () => {
             userGreeting.classList.add('hide');
         }
     };
-    
-    window.logout = () => {
-        localStorage.removeItem('loggedInUser');
-        checkUserState();
-        window.location.href = 'index.html';
-    };
 
-    const saveUser = (username, password) => {
-        const users = JSON.parse(localStorage.getItem('users')) || {};
-        if (users[username]) {
-            return false; 
+    // User authentication functions
+    const registerUser = (username, password) => {
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const userExists = users.some(user => user.username === username);
+        if (userExists) {
+            return false;
         }
-        users[username] = password;
+        users.push({ username, password });
         localStorage.setItem('users', JSON.stringify(users));
         return true;
     };
-    
+
     const authenticateUser = (username, password) => {
-        const users = JSON.parse(localStorage.getItem('users')) || {};
-        return users[username] === password;
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const user = users.find(user => user.username === username && user.password === password);
+        return !!user;
     };
-    
-    // Form Submissions
+
+    // Form submission handlers
     signupForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = e.target.signupUsername.value;
         const password = e.target.signupPassword.value;
-        if (saveUser(username, password)) {
+        if (registerUser(username, password)) {
             window.showNotification('Registration successful! Please log in.', 'success');
             hideModal(signupModal);
             showModal(loginModal);
+            checkUserState();
         } else {
             window.showNotification('Username already exists.', 'error');
         }
     });
-    
+
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = e.target.loginUsername.value;
@@ -131,9 +128,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (logoutBtn) {
-        logoutBtn.addEventListener('click', window.logout);
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('loggedInUser');
+            window.showNotification('Logged out successfully!', 'info');
+            checkUserState();
+            window.location.href = 'index.html';
+        });
     }
-    
+
     // Notification system
     window.showNotification = (message, type = 'info') => {
         const notification = document.createElement('div');
@@ -149,5 +151,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     };
 
-    checkUserState(); 
+    checkUserState();
 });
