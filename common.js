@@ -106,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.showNotification('Registration successful! Please log in.', 'success');
             hideModal(signupModal);
             showModal(loginModal);
-            checkUserState();
         } else {
             window.showNotification('Username already exists.', 'error');
         }
@@ -138,10 +137,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Notification system
     window.showNotification = (message, type = 'info') => {
+        const container = document.getElementById('notificationContainer');
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
         notification.textContent = message;
-        document.body.appendChild(notification);
+        container.appendChild(notification);
         setTimeout(() => {
             notification.classList.add('show');
         }, 10);
