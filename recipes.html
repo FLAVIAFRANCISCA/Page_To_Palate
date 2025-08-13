@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Recipes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="title-link">
+                <h1>Page to Palate</h1>
+            </a>
+            <button class="nav-toggle" id="navToggle">
+                <span class="hamburger-icon"></span>
+            </button>
+            <nav class="nav" id="mainNav">
+                <span id="userGreeting" class="user-greeting hide">Welcome, <b id="username"></b>!</span>
+                <a href="index.html" class="nav-link" data-page="index">Home</a>
+                <a href="recipes.html" class="nav-link" data-page="recipes">Explore Recipes</a>
+                <a href="private-collection.html" id="privateCollectionLink" class="nav-link hide" data-page="private-collection">My Private Collection</a>
+                <a href="favorites.html" id="favoritesLink" class="nav-link hide" data-page="favorites">My Favorites</a>
+                <a href="add-recipe.html" id="addRecipeLink" class="nav-link hide" data-page="add-recipe">Add Recipe</a>
+                <button id="signupBtn" class="nav-button">Sign Up</button>
+                <button id="loginBtn" class="nav-button">Login</button>
+                <button id="logoutBtn" class="nav-button hide">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container">
+            <div class="recipes-header">
+                <h2 id="pageTitle">Explore Recipes</h2>
+                <div class="filter-controls">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search by recipe name...">
+                </div>
+            </div>
+            <div class="recipes-grid" id="recipesGrid">
+                </div>
+            <p id="noResultsMessage" class="no-results hide">No recipes found.</p>
+        </section>
+    </main>
+
+    <div id="recipeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="modalBody">
+                </div>
+        </div>
+    </div>
+    
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Login</h3>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-input" required>
+                </div>
+                <button type="submit" class="button">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Sign Up</h3>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupUsername">Username</label>
+                    <input type="text" id="signupUsername" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" class="form-input" required>
+                </div>
+                <button type="submit" class="button">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Page to Palate.</p>
+        </div>
+    </footer>
+
+    <script src="common.js"></script>
+    <script src="recipes.js"></script>
+</body>
+</html>

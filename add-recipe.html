@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Recipe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="title-link">
+                <h1>Page to Palate</h1>
+            </a>
+            <button class="nav-toggle" id="navToggle">
+                <span class="hamburger-icon"></span>
+            </button>
+            <nav class="nav" id="mainNav">
+                <span id="userGreeting" class="user-greeting hide">Welcome, <b id="username"></b>!</span>
+                <a href="index.html" class="nav-link" data-page="index">Home</a>
+                <a href="recipes.html" class="nav-link" data-page="recipes">Explore Recipes</a>
+                <a href="private-collection.html" id="privateCollectionLink" class="nav-link hide" data-page="private-collection">My Private Collection</a>
+                <a href="favorites.html" id="favoritesLink" class="nav-link hide" data-page="favorites">My Favorites</a>
+                <a href="add-recipe.html" id="addRecipeLink" class="nav-link hide" data-page="add-recipe">Add Recipe</a>
+                <button id="signupBtn" class="nav-button">Sign Up</button>
+                <button id="loginBtn" class="nav-button">Login</button>
+                <button id="logoutBtn" class="nav-button hide">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container">
+            <div class="form-card">
+                <h2>Add a New Recipe</h2>
+                <form id="addRecipeForm">
+                    <div class="form-group">
+                        <label for="recipeTitle">Recipe Title</label>
+                        <input type="text" id="recipeTitle" class="form-input" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="recipeCategory">Category</label>
+                        <input type="text" id="recipeCategory" class="form-input" placeholder="e.g., Chicken, Vegan, Dessert" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="recipeImageFile">Recipe Image</label>
+                        <input type="file" id="recipeImageFile" accept="image/*" class="form-input" />
+                    </div>
+                    <div class="form-group">
+                        <label for="ingredients">Ingredients (one per line)</label>
+                        <textarea id="ingredients" class="form-textarea" rows="6" placeholder="1 cup flour&#10;2 large eggs&#10;1 tsp salt" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="instructions">Instructions</label>
+                        <textarea id="instructions" class="form-textarea" rows="10" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="isPrivate">
+                            <input type="checkbox" id="isPrivate" checked />
+                            Add to My Private Collection (only visible to you)
+                        </label>
+                    </div>
+                    <button type="submit" class="button">Add Recipe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <p id="modalMessage"></p>
+            <button id="modalOkBtn" class="button">OK</button>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Page to Palate.</p>
+        </div>
+    </footer>
+
+    <script src="common.js"></script>
+    <script src="add-recipe.js"></script>
+</body>
+</html>

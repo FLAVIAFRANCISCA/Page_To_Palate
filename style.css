@@ -1,0 +1,682 @@
+/* ======================== */
+/* Global Styles & Layout   */
+/* ======================== */
+
+/* Custom Elegant Color Palette & Fonts */
+:root {
+    --primary-color: #F4F1DE;
+    --secondary-color: #487349;
+    --background-color: #F4F1DE;
+    --text-color: #000000;
+    --card-bg-color: #F4F1DE;
+    --shadow-color: rgba(0,0,0,0.25);
+    --font-family-heading: 'Playfair Display', serif;
+    --font-family-body: 'Lato', sans-serif;
+}
+
+body {
+    font-family: var(--font-family-body);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    line-height: 1.6;
+    transition: background-color 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-family-heading);
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header and Navigation */
+.header {
+    background-color: var(--background-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding: 15px 0; /* Reduced padding */
+    position: relative;
+    z-index: 50;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.title-link {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.75rem; /* Slightly smaller title */
+    color: var(--secondary-color);
+}
+
+/* Hamburger Menu: Always visible for all screen sizes */
+.nav-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    padding: 8px; /* Added padding for touch targets */
+    position: relative;
+    z-index: 60;
+}
+
+.hamburger-icon {
+    display: block;
+    width: 24px; /* Slightly smaller icon */
+    height: 2px; /* Thinner icon */
+    background: var(--secondary-color);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px; /* Consistent with base width */
+    height: 2px; /* Consistent with base height */
+    background: var(--secondary-color);
+    transition: transform 0.3s ease, top 0.3s ease;
+}
+
+.hamburger-icon::before {
+    top: -7px; /* Adjusted spacing */
+}
+
+.hamburger-icon::after {
+    top: 7px; /* Adjusted spacing */
+}
+
+.nav-toggle.active .hamburger-icon {
+    transform: rotate(45deg);
+}
+
+.nav-toggle.active .hamburger-icon::before {
+    top: 0;
+    opacity: 0;
+}
+
+.nav-toggle.active .hamburger-icon::after {
+    top: 0;
+    transform: rotate(-90deg);
+}
+
+/* Navigation for Mobile */
+.nav {
+    position: fixed;
+    top: 0;
+    right: -260px; /* Slightly narrower menu */
+    width: 250px;
+    height: 100vh;
+    background-color: var(--primary-color);
+    box-shadow: -2px 0 10px var(--shadow-color);
+    padding-top: 60px; /* Adjust padding */
+    transition: right 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Reduced gap */
+    z-index: 55;
+}
+
+.nav.active {
+    right: 0;
+}
+
+/* Ensure consistent button/link size */
+.nav-link, .nav-button {
+    font-family: var(--font-family-body);
+    font-weight: bold;
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+    border-radius: 20px; /* Slightly smaller radius */
+    padding: 8px 15px; /* Reduced padding */
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: transparent;
+    text-align: center;
+    text-decoration: none; /* Ensure nav links are also styled as buttons */
+    white-space: nowrap;
+    width: 85%; /* Adjusted width in menu */
+    margin: 0 auto;
+    font-size: 0.9rem; /* Smaller font */
+}
+
+.nav-link:hover, .nav-button:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    box-shadow: 0 2px 5px var(--shadow-color); /* Reduced shadow */
+}
+
+.nav-link.active, .nav-button.active {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.user-greeting {
+    color: var(--secondary-color);
+    font-weight: bold;
+    align-self: center;
+    padding: 10px;
+    margin-bottom: 15px; /* Reduced margin */
+    font-size: 0.9rem; /* Smaller font */
+}
+
+/* Hero Section and Spacing */
+.hero-section {
+    text-align: center;
+    padding: 60px 20px; /* Reduced padding */
+}
+
+.hero-section h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem); /* Adjusted font size */
+    color: var(--secondary-color);
+    margin: 0;
+    letter-spacing: normal;
+}
+
+.hero-section p {
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem); /* Adjusted font size */
+    color: var(--secondary-color);
+    margin-top: 8px; /* Reduced margin */
+    margin-bottom: 30px; /* Reduced margin */
+}
+
+/* 3D Carousel Styles */
+.carousel-container {
+    width: 200px; /* Smaller carousel */
+    height: 200px; /* Smaller carousel */
+    perspective: 600px; /* Adjusted perspective */
+    margin: 30px auto; /* Reduced margin */
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateCarousel 15s infinite linear; /* Faster rotation */
+}
+
+.carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    backface-visibility: hidden;
+    border-radius: 8px; /* Smaller radius */
+    box-shadow: 0 3px 8px var(--shadow-color); /* Reduced shadow */
+    border: 1px solid var(--secondary-color); /* Thinner border */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px; /* Consistent radius */
+}
+
+.carousel-item:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }
+.carousel-item:nth-child(2) { transform: rotateY(90deg) translateZ(100px); }
+.carousel-item:nth-child(3) { transform: rotateY(180deg) translateZ(100px); }
+.carousel-item:nth-child(4) { transform: rotateY(270deg) translateZ(100px); }
+
+@keyframes rotateCarousel {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+.explore-button-container {
+    margin-top: 30px; /* Reduced margin */
+}
+
+.explore-button {
+    font-size: 1rem; /* Smaller font */
+    padding: 12px 25px; /* Reduced padding */
+    border-radius: 20px; /* Consistent radius */
+}
+
+/* Recipes Page Styles */
+.recipes-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax width */
+    gap: 15px; /* Reduced gap */
+    margin-top: 15px; /* Reduced margin */
+}
+
+.filter-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Reduced gap */
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.search-input {
+    padding: 10px 15px; /* Reduced padding */
+    border-radius: 20px; /* Consistent radius */
+    border: 1px solid var(--secondary-color); /* Thinner border */
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family-body);
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 400px; /* Reduced max width */
+    font-size: 0.9rem; /* Smaller font */
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 3px var(--secondary-color); /* Reduced shadow */
+}
+
+.recipe-card-container {
+    perspective: 1000px;
+    transition: transform 0.5s;
+    position: relative;
+}
+
+.recipe-card {
+    background: var(--card-bg-color);
+    border-radius: 8px; /* Consistent radius */
+    box-shadow: 0 2px 5px var(--shadow-color); /* Reduced shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Added for heart icon positioning */
+}
+
+.recipe-card:hover {
+    transform: translateY(-3px); /* Reduced lift */
+    box-shadow: 0 3px 8px var(--secondary-color); /* Reduced shadow */
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 180px; /* Slightly smaller image */
+    object-fit: cover;
+}
+
+.recipe-card-content {
+    padding: 12px; /* Reduced padding */
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Category text styling */
+.recipe-card-content .recipe-category {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-style: italic;
+}
+
+.recipe-card-content h3 {
+    font-size: 1rem; /* Smaller font */
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.view-recipe-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 0.8rem;
+}
+
+.no-results {
+    text-align: center;
+    padding: 30px; /* Reduced padding */
+    color: var(--secondary-color);
+    font-size: 0.9rem; /* Smaller font */
+}
+
+/* Favorite Icon Styles */
+.favorite-icon {
+    position: absolute;
+    top: 8px; /* Adjusted position */
+    right: 8px; /* Adjusted position */
+    font-size: 1.5rem; /* Smaller icon */
+    color: white;
+    cursor: pointer;
+    text-shadow: 0 0 3px rgba(0,0,0,0.5); /* Reduced shadow */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.favorite-icon:hover {
+    transform: scale(1.05); /* Reduced scale */
+}
+
+.favorite-icon.active {
+    color: var(--secondary-color);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
+    padding-top: 40px; /* Reduced padding */
+}
+
+.modal.show-modal {
+    display: block;
+}
+
+.modal-content {
+    background-color: var(--background-color);
+    margin: 5% auto;
+    padding: 25px; /* Reduced padding */
+    border: 1px solid var(--secondary-color); /* Thinner border */
+    width: 85%; /* Adjusted width */
+    max-width: 700px; /* Adjusted max width */
+    border-radius: 8px; /* Consistent radius */
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3); /* Reduced shadow */
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content h2, h3 {
+    text-align: center;
+    font-size: 1.5rem; /* Smaller heading */
+    margin-bottom: 1.5rem; /* Reduced margin */
+}
+
+/* Adjusted modal image to be a small square and centered */
+.modal-image-container {
+    width: 200px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height for a square */
+    margin: 0 auto 15px auto; /* Center the container and add margin below */
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.modal-image-container img {
+    width: 100%; /* Ensure image fills its container */
+    height: 100%; /* Ensure image fills its container */
+    object-fit: cover; /* Crop to fit, maintaining aspect ratio */
+}
+
+.modal-text-content {
+    text-align: left;
+    font-size: 0.9rem; /* Smaller font */
+}
+
+.modal-text-content h3 {
+    color: var(--secondary-color);
+    text-align: left;
+    margin-top: 1rem; /* Reduced margin */
+    margin-bottom: 0.4rem; /* Reduced margin */
+    font-size: 1.1rem; /* Slightly smaller sub-heading */
+}
+
+.modal-text-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.modal-text-content ul li {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--secondary-color); /* Thinner border */
+    border-radius: 4px; /* Smaller radius */
+    padding: 6px; /* Reduced padding */
+    margin-bottom: 4px; /* Reduced margin */
+    font-size: 0.85rem; /* Smaller list item font */
+}
+
+.modal-text-content p {
+    white-space: pre-wrap; /* Preserve line breaks from textarea input */
+    line-height: 1.4;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 22px; /* Smaller close button */
+    font-weight: bold;
+    position: absolute;
+    top: 8px; /* Adjusted position */
+    right: 15px; /* Adjusted position */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); } /* Reduced animation distance */
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Styles */
+.form-card {
+    background: var(--card-bg-color);
+    border-radius: 8px; /* Consistent radius */
+    box-shadow: 0 2px 5px var(--shadow-color); /* Reduced shadow */
+    padding: 30px; /* Reduced padding */
+    margin-top: 30px; /* Reduced margin */
+}
+
+.form-card h2 {
+    text-align: center;
+    margin-bottom: 20px; /* Reduced margin */
+    font-size: 1.5rem; /* Smaller heading */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Reduced margin */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px; /* Reduced margin */
+    font-weight: bold;
+    color: var(--secondary-color);
+    font-size: 0.9rem; /* Smaller font */
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 10px; /* Reduced padding */
+    border: 1px solid var(--secondary-color); /* Thinner border */
+    border-radius: 20px; /* Consistent radius */
+    background-color: var(--card-bg-color);
+    font-family: var(--font-family-body);
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Ensures padding doesn't affect total width */
+    font-size: 0.9rem; /* Smaller font */
+}
+
+.form-input:focus, .form-textarea:focus {
+    outline: none;
+    box-shadow: 0 0 3px var(--secondary-color); /* Reduced shadow */
+}
+
+.form-textarea {
+    border-radius: 8px; /* Consistent radius */
+    resize: vertical;
+}
+
+.button {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 12px 25px; /* Reduced padding */
+    border-radius: 20px; /* Consistent radius */
+    cursor: pointer;
+    font-size: 0.9rem; /* Smaller font */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.button:hover {
+    background-color: #3f6840;
+    box-shadow: 0 2px 5px var(--shadow-color); /* Reduced shadow */
+}
+
+.hide {
+    display: none !important;
+}
+
+/* Notification Styles - Modern Pop Up */
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    z-index: 1000;
+    border: 1px solid var(--secondary-color);
+    text-align: center;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.notification.hide {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+}
+
+.notification.error {
+    background-color: #ffebee;
+    color: #d32f2f;
+    border-color: #d32f2f;
+}
+
+.notification.info {
+    background-color: #e8f5e9;
+    color: #388e3c;
+    border-color: #388e3c;
+}
+
+.notification.success {
+    background-color: #e0f2f7;
+    color: #0277bd;
+    border-color: #0277bd;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Media Queries for Desktop */
+@media (min-width: 768px) {
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        box-shadow: none;
+        padding-top: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .nav.active {
+        right: 0;
+    }
+    
+    .nav-link, .nav-button {
+        width: auto;
+    }
+    
+    .user-greeting {
+        margin: 0;
+    }
+
+    .modal-content {
+        max-width: 800px;
+    }
+
+    .recipes-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+
+    .filter-controls {
+        width: auto;
+    }
+}
