@@ -33,28 +33,22 @@
         </div>
     </header>
 
-    <main>
-        <section class="container">
-            <div class="recipes-header">
-                <h2 id="pageTitle">My Private Collection</h2>
-                <div class="filter-controls">
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search by recipe name...">
+    <main class="main-content">
+        <section class="recipes-section">
+            <h2 id="pageTitle">My Private Collection</h2>
+            <div id="recipesGrid" class="recipes-grid">
                 </div>
-            </div>
-            <div class="recipes-grid" id="recipesGrid">
-                </div>
-            <p id="noResultsMessage" class="no-results hide">No recipes found.</p>
         </section>
     </main>
-    
+
     <div id="recipeModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content recipe-modal-content">
             <span class="close-button">&times;</span>
             <div id="modalBody">
                 </div>
         </div>
     </div>
-    
+
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
