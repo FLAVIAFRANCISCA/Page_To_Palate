@@ -17,6 +17,6 @@ Privacy Controls: This is a big one. You can choose to make your recipes public 
 Intuitive Interface: The design is clean and simple, making it easy to navigate whether you're looking for a new dinner idea or adding your grandmother's famous cookie recipe.
 
 # How It Works
-Page to Palate is built on HTML, JavaScript, CSS, TheMeal Database API. When you add a recipe, it's stored in a database and can be retrieved and displayed based on your privacy settings. The user interface is designed to make the experience of adding and viewing recipes as smooth as possible.
+Page to Palate is built on HTML, JavaScript, CSS, TheMeal Database API. When you add a recipe, it's stored in a local storage and can be retrieved and displayed based on your privacy settings. The user interface is designed to make the experience of adding and viewing recipes as smooth as possible.
 
 This project was a labor of love, and I'm so excited to finally share it with you all. I hope it brings as much joy to others as it has to my family.
